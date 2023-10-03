@@ -1,16 +1,3 @@
-[![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-24ddc0f5d75046c5622901739e7c5dd533143b0c8e959d652212380cedb1ea36.svg)](https://classroom.github.com/a/_IojtdoU)
-# StackIt Hiring Assignment
-
-### Welcome to StackIt's hiring assignment! 🚀
-
-**If you didn't get here through github classroom, are you sure you're supposed to be here? 🤨**
-
-
-We are glad to have you here, but before you read what you're going to beat your head over for the next few hours (maybe days?), let's get a few things straight:
-- We really appreciate honesty. Don't copy anyone else's assignment, it'll only sabotage your chances :P
-- You're free to use any stack, and library of your choice. Use whatever you can get your hands on, on the internet!
-- We love out of the box solutions. We prefer to call it *Jugaad* 
-- This might be just the first round, but carries the most importance of all. Give your best, and we hope you have a fun time solving this problem.
 
 ## ✨ **Problem Statement: Crafting a CSV Importer for Google Sheets** ✨
 
