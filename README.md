@@ -1,4 +1,5 @@
 
+
 ## **CSV Importer for Google Sheets**
 
 **Context**:
@@ -12,18 +13,6 @@ So To handle this problem I have Made a CSV Importer for Google Sheets that lets
 **Additional Features**:
 - Import to Sheet – After validation and mapping,I have devised a method to populate the data into a chosen Google Sheet, either appending to existing data or creating a new sheet 📥📋.
 - Optimized for Large Files – Large datasets are common in analytics. this CSVImpoter effectively handles large CSV files (~15MB CSV file) without causing performance issues or prolonged waiting times 📈📦.
-
-
-
-Once you're done, make sure you **record a video** showing your project working. The video should **NOT** be longer than 120 seconds. While you record the video, tell us about your biggest blocker, and how you overcame it! Don't be shy, talk us through, we'd love that.
-
-We have a checklist at the bottom of this README file, which you should update as your progress with your assignment. It will help us evaluate your project.
-
-- [x] My code's working just fine! 🥳
-- [x] I have recorded a video showing it working and embedded it in the README ▶️
-- [x] I have tested all the normal working cases 😎
-- [x] I have even solved some edge cases (brownie points) 💪
-- [x] I added my very planned-out approach to the problem at the end of this README 📜
 
 
 ## Developer's Section
@@ -56,7 +45,8 @@ We have a checklist at the bottom of this README file, which you should update a
 
 
 
-### Steps to set up the project
+### **Steps to set up the project**
+
 ### Open Google Sheets:
 Make sure you have the Google Sheet where you want to add the drag-and-drop CSV importer.
 
@@ -86,3 +76,5 @@ delete the existing code and copy paste the code from "UploadCSV.html" file in t
 
 <br/>
 Run the code.gs file and authorize it 
+<br/>
+### [Show some ❤️ by starring some of the repositories! ](https://github.com/Girishtheja?tab=repositories)
