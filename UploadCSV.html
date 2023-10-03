@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base target="_top">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .drag-area {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .drag-area.active {
+            border-color: #0fb8ac;
+        }
+
+        .drag-area span {
+            display: block;
+            margin-top: 10px;
+        }
+
+        .drag-area button {
+            background-color: #0fb8ac;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+
+        #column-selection {
+            margin-top: 20px;
+        }
+
+        h3 {
+            font-size: 1.2em;
+            margin-top: 0;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+        }
+
+        #import-options,
+        #import-buttons {
+            margin-top: 20px;
+        }
+
+        #import-button,
+        #cancel-button {
+            background-color: #0fb8ac;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        #cancel-button {
+            background-color: #ccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="drag-area">
+            <header>Drag & Drop CSV File</header>
+            <span>OR</span>
+            <button>Browse File</button>
+            <input type="file" hidden accept=".csv">
+        </div>
+
+        <div id="column-selection" style="display: none;">
+            <h3>Select Columns to Import:</h3>
+            <label><input type="checkbox" id="select-all"> Select All</label>
+            <!-- Add checkboxes dynamically based on CSV columns -->
+        </div>
+
+        <div id="import-options" style="display: none;">
+            <h3>Import Options:</h3>
+            <label>
+                <input type="radio" name="import-option" value="append" id="append-option" checked>
+                Append to Existing Data
+            </label>
+            <label>
+                <input type="radio" name="import-option" value="replace" id="replace-option">
+                Replace Existing Data
+            </label>
+        </div>
+
+        <div id="import-buttons" style="display: none;">
+            <button id="import-button">Import Selected Columns</button>
+            <button id="cancel-button">Cancel</button>
+        </div>
+    </div>
+
+    <script>
+        const dropArea = document.querySelector(".drag-area");
+        const button = dropArea.querySelector("button");
+        const input = dropArea.querySelector("input");
+        const columnSelection = document.getElementById("column-selection");
+        const selectAllCheckbox = document.getElementById("select-all");
+        const importOptions = document.getElementById("import-options");
+        const importButtons = document.getElementById("import-buttons");
+        const importButton = document.getElementById("import-button");
+        const cancelButton = document.getElementById("cancel-button");
+
+        let file;
+        let csvHeaders = [];
+
+        button.onclick = () => {
+            input.click();
+        }
+
+        input.addEventListener("change", function () {
+            file = this.files[0];
+            dropArea.classList.add("active");
+            parseCSVHeaders(file);
+        });
+
+        dropArea.addEventListener("dragover", (event) => {
+            event.preventDefault();
+            dropArea.classList.add("active");
+        });
+
+        dropArea.addEventListener("dragleave", () => {
+            dropArea.classList.remove("active");
+        });
+
+        dropArea.addEventListener("drop", (event) => {
+            event.preventDefault();
+            file = event.dataTransfer.files[0];
+            parseCSVHeaders(file);
+        });
+
+        function parseCSVHeaders(file) {
+            if (file.type === "text/csv") {
+                const fileReader = new FileReader();
+                fileReader.onload = () => {
+                    const fileContent = fileReader.result;
+                    const lines = fileContent.split('\n');
+                    if (lines.length > 0) {
+                        csvHeaders = lines[0].split(',');
+                        displayColumnSelection();
+                    }
+                }
+                fileReader.readAsText(file);
+            } else {
+                alert("Please select a CSV file.");
+                dropArea.classList.remove("active");
+            }
+        }
+
+        function displayColumnSelection() {
+            columnSelection.style.display = "block";
+            selectAllCheckbox.checked = false;
+            selectAllCheckbox.addEventListener("change", function () {
+                const checkboxes = document.querySelectorAll('input[name="selected-columns"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = this.checked;
+                });
+            });
+
+            csvHeaders.forEach(header => {
+                const checkbox = document.createElement("input");
+                checkbox.type = "checkbox";
+                checkbox.name = "selected-columns";
+                checkbox.value = header;
+                checkbox.id = header;
+                const label = document.createElement("label");
+                label.htmlFor = header;
+                label.appendChild(document.createTextNode(header));
+                columnSelection.appendChild(checkbox);
+                columnSelection.appendChild(label);
+            });
+
+            importOptions.style.display = "block";
+            importButtons.style.display = "block";
+            importButton.onclick = () => {
+                const selectedColumns = Array.from(document.querySelectorAll('input[name="selected-columns"]:checked')).map(checkbox => checkbox.value);
+                if (selectedColumns.length === 0) {
+                    alert("Please select at least one column to import.");
+                } else {
+                    const sheetName = prompt("Enter the target sheet name:");
+                    if (sheetName) {
+                        importCSV(selectedColumns, sheetName);
+                    }
+                }
+            };
+
+            cancelButton.onclick = () => {
+                hideColumnSelection();
+                hideImportOptions();
+                // Clear the selected columns
+                const checkboxes = document.querySelectorAll('input[name="selected-columns"]');
+                checkboxes.forEach(checkbox => {
+                    checkbox.checked = false;
+                });
+            };
+        }
+
+        function hideColumnSelection() {
+            columnSelection.style.display = "none";
+        }
+
+        function hideImportOptions() {
+            importOptions.style.display = "none";
+            importButtons.style.display = "none";
+        }
+
+        // function importCSV(selectedColumns, sheetName) {
+        //     const fileReader = new FileReader();
+        //     fileReader.onload = () => {
+        //         const fileContent = fileReader.result;
+        //         google.script.run.importCSVData(fileContent, selectedColumns, sheetName, getImportOption());
+        //         dropArea.innerHTML = "CSV File Processing!";
+        //         hideColumnSelection();
+        //         hideImportOptions();
+        //     }
+        //     fileReader.readAsText(file);
+        // }
+        function importCSV(selectedColumns, sheetName) {
+            const fileReader = new FileReader();
+            fileReader.onload = () => {
+                const fileContent = fileReader.result;
+
+                // Show a loading message
+                dropArea.innerHTML = "CSV File Processing...";
+                hideColumnSelection();
+                hideImportOptions();
+                google.script.run.withSuccessHandler(() => {
+                    // Replace the loading message with a success message when the processing is complete
+                    dropArea.innerHTML = "CSV File Processed Successfully!";
+
+                }).importCSVData(fileContent, selectedColumns, sheetName, getImportOption());
+            }
+            fileReader.readAsText(file);
+        }
+
+
+        function getImportOption() {
+            return document.querySelector('input[name="import-option"]:checked').value;
+        }
+    </script>
+</body>
+
+</html>
