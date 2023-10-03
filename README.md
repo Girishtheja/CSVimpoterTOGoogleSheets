@@ -1,22 +1,19 @@
 
-## ✨ **Problem Statement: Crafting a CSV Importer for Google Sheets** ✨
+## **CSV Importer for Google Sheets**
 
 **Context**:
 Data analysts around the world 🌍, handle massive amounts of data to derive meaningful insights for their organization 📊. Among the tools they use, Google Sheets 📈 stands out due to its ease of use, accessibility, and collaborative features. However, many analysts have identified a recurring pain point: the cumbersome process of importing CSV files into Google Sheets repeatedly.
 
 A typical week of an analyst in an e-commerce company 🛒 involves receiving multiple CSV files 📁 containing sales, inventory, customer feedback, and more. The data from these files needs to be meticulously analyzed and presented in the company’s weekly meetings. However, instead of diving directly into analysis, most analysts need to spend an inordinate amount of time just importing and structuring these CSV files into Google Sheets ⏳. This repetitive, time-consuming task reduces the efficiency of these professionals and delays the extraction of crucial insights 😫.
 
-**Today, you are going to make their lives better.**
 
-**Problem Statement**:
-Make a CSV Importer for Google Sheets that lets users drag and drop CSV files onto the Google Sheet. The moment they drop the CSV file, allow them to select which columns to import 🗂️.
+So To handle this problem I have Made a CSV Importer for Google Sheets that lets users drag and drop CSV files onto the Google Sheet. The moment they drop the CSV file, allow them to select which columns to import 🗂️.
 
 **Additional Features**:
-- Import to Sheet – After validation and mapping, devise a method to populate the data into a chosen Google Sheet, either appending to existing data or creating a new sheet 📥📋.
-- Optimize for Large Files – Large datasets are common in analytics. Your solution should effectively handle large CSV files (~15MB CSV file) without causing performance issues or prolonged waiting times 📈📦.
+- Import to Sheet – After validation and mapping,I have devised a method to populate the data into a chosen Google Sheet, either appending to existing data or creating a new sheet 📥📋.
+- Optimized for Large Files – Large datasets are common in analytics. this CSVImpoter effectively handles large CSV files (~15MB CSV file) without causing performance issues or prolonged waiting times 📈📦.
 
 
-Make sure you finish the assignment a little earlier than this so you have time to make any final changes.
 
 Once you're done, make sure you **record a video** showing your project working. The video should **NOT** be longer than 120 seconds. While you record the video, tell us about your biggest blocker, and how you overcame it! Don't be shy, talk us through, we'd love that.
 
