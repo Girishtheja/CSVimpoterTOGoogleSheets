@@ -47,18 +47,18 @@ So To handle this problem I have Made a CSV Importer for Google Sheets that lets
 
 ### **Steps to set up the project**
 
-### Open Google Sheets:
+**Open Google Sheets:**
 Make sure you have the Google Sheet where you want to add the drag-and-drop CSV importer.
 
-## Open Script Editor:
+**Open Script Editor:**
 Click on Extensions > Apps Script to open the Google Apps Script editor.
 ![image](https://github.com/StackItHQ/stackit-hiring-assignment-Girishtheja/assets/70694072/b2da2405-4b4a-4182-854c-dddadecba72d)
 
-## create New Script:
+**create New Script:**
 ![image](https://github.com/StackItHQ/stackit-hiring-assignment-Girishtheja/assets/70694072/a1a75af5-a791-47ee-bdbb-dceb5a6cc047)
 delete the existing code and copy paste the code from "code.gs" file in the repo  and hit "ctrl+s" to save the file
 
-## create New HTML file:
+**create New HTML file:**
 Click on the "+" icon shown in the below image to create the HTML file
 
 ![image](https://github.com/StackItHQ/stackit-hiring-assignment-Girishtheja/assets/70694072/2066cd73-41c6-4480-a897-cc0868e8a379)
