@@ -69,12 +69,12 @@ Rename the file as "UploadCSV" and hit enter
 
 ![image](https://github.com/StackItHQ/stackit-hiring-assignment-Girishtheja/assets/70694072/a74b2f15-5d5f-4251-9f15-40850eeaefa6)
 <br/>
-delete the existing code and copy paste the code from "UploadCSV.html" file in the repo and hit "ctrl+s" to save the file
+delete the existing code and copy paste the code from`UploadCSV.html` file in the repo and hit `ctrl+s` to save the file
 <br/>
 
 ![image](https://github.com/StackItHQ/stackit-hiring-assignment-Girishtheja/assets/70694072/5cc4f676-e2f7-416f-9577-42fd9e6efca7)
 
 <br/>
-Run the code.gs file and authorize it 
+Run the `code.gs` file and authorize it 
 <br/>
 ### [Show some ❤️ by starring some of the repositories! ](https://github.com/Girishtheja?tab=repositories)
